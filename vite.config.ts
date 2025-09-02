@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import path from 'path'
+import { resolve } from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,21 +9,26 @@ export default defineConfig({
     outDir: 'dist',
     rollupOptions: {
       input: {
-        panel: path.resolve(__dirname, 'src/panel.tsx'),
+        panel: resolve('./src/panel.tsx'),
       },
       output: {
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
-        assetFileNames: '[name].[ext]'
+        assetFileNames: '[name].[ext]',
+        format: 'iife',
+        name: 'BugTrace',
+        inlineDynamicImports: true
       }
     },
-    target: 'es2015',
-    minify: false
+    target: 'es2020',
+    sourcemap: false,
+    minify: false,
+    cssCodeSplit: false
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
-    },
+      '@': resolve('./src')
+    }
   },
   define: {
     global: 'globalThis',
