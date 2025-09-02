@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "icons": "echo 'Icon generation placeholder - add your preferred icon generation tool here'"
+  },
+  "devDependencies": {
+    "icon-gen": "^3.0.0"
+  }
+}
